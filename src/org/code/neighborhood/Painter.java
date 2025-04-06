@@ -21,7 +21,7 @@ public class Painter {
 
   /** Creates a Painter object at (0, 0), facing East, with no paint. */
   public Painter() {
-    this(0, 0, "East", 0, true);
+    this(0, 0, "East", 0, true, "resources/my-map.json");
   }
 
   /**
@@ -33,15 +33,15 @@ public class Painter {
    * @param paint the amount of paint the painter has to start
    */
   public Painter(int x, int y, String direction, int paint) {
-    this(x, y, direction, paint, false);
+    this(x, y, direction, paint, false, "resources/my-map.json");
   }
 
-  private Painter(int x, int y, String direction, int paint, boolean couldHaveInfinitePaint) {
+  private Painter(int x, int y, String direction, int paint, boolean couldHaveInfinitePaint, String filePath) {
     this.xLocation = x;
     this.yLocation = y;
     this.direction = Direction.fromString(direction);
     this.remainingPaint = paint;
-    World currentWorld = (World) JavabuilderContext.getInstance().get(World.class);
+    World currentWorld = new World(filePath);
     if (currentWorld == null) {
       currentWorld = new World();
       JavabuilderContext.getInstance().register(World.class, currentWorld);

@@ -1,9 +1,13 @@
 package org.code.neighborhood.support;
 
 import java.io.IOException;
-import org.code.protocol.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-public class World extends JavabuilderSharedObject {
+import org.code.neighborhood.support.Grid;
+import org.code.neighborhood.support.GridFactory;
+
+public class World{
   private final Grid grid;
 
   public World(int size) {
@@ -16,8 +20,7 @@ public class World extends JavabuilderSharedObject {
     try {
       this.grid = gridFactory.createGridFromString(s);
     } catch (IOException e) {
-      throw new InternalServerRuntimeException(InternalExceptionKey.INTERNAL_EXCEPTION, e);
-    }
+      throw new RuntimeException("Could not load grid");
   }
 
   public World() {
@@ -25,8 +28,17 @@ public class World extends JavabuilderSharedObject {
     try {
       this.grid = gridFactory.createGridFromJSON("grid.txt");
     } catch (IOException e) {
-      throw new InternalServerRuntimeException(InternalExceptionKey.INTERNAL_EXCEPTION, e);
+      throw new RuntimeException("Could not load grid");
     }
+  }
+
+  public World(String filePath, boolean isFilePath) {
+    GridFactory gridFactory = new GridFactory();
+    try {
+      String json = Files.readString(Paths.get(filePath));
+      this.grid = gridFactory.createGridFromString(json);
+    } catch (IOException e) {
+      throw new RuntimeException("Could not load grid");
   }
 
   public Grid getGrid() {

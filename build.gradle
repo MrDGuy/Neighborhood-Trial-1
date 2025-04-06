@@ -6,48 +6,32 @@
  * User Manual available at https://docs.gradle.org/6.8.3/userguide/building_java_projects.html
  */
 
-plugins {
-    // Apply the java-library plugin for API and implementation separation.
-    id 'java-library'
-    id 'com.github.sherter.google-java-format' version '0.8'
+pplugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'org.code'
+version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 repositories {
-    // Use Maven Central for resolving dependencies.
     mavenCentral()
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-}
-
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    // https://mvnrepository.com/artifact/org.mockito/mockito-core
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.9.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.0'
-    // https://mvnrepository.com/artifact/org.json/json
-    implementation group: 'org.json', name: 'json', version: '20210307'
-    implementation project(':protocol')
-    testImplementation testFixtures(project(':protocol'))
+    // Gson for JSON parsing (recommended over org.json)
+    implementation 'com.google.code.gson:gson:2.10.1'
+    
+    // You can add testing libs here if needed:
+    testImplementation 'junit:junit:4.13.2'
 }
 
-test {
-    useJUnitPlatform()
+application {
+    // Replace with your main class
+    mainClass = 'MyNeighborhood'
 }
-
-// Builds the Neighborhood fat-jar (i.e. jar with all dependencies) and copies it to the resources
-// folder in the javabuilder sub-project (currently named 'lib'). This will allow student code to
-// access the Neighborhood package.
-task buildNeighborhood(type: Jar) {
-    archiveClassifier = 'full'
-    from sourceSets.main.output
-    dependsOn configurations.runtimeClasspath
-    from {
-        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
-    }
-    destinationDirectory = project(':lib').project.layout.projectDirectory.dir('src/main/resources/jars')
-}
-
-build.dependsOn buildNeighborhood
