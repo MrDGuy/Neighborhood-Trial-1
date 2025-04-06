@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.code.neighborhood.PainterTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2025-03-22T18:10:19" hostname="MOLC02H4J6CQ6L4" time="0.063">
+  <properties/>
+  <testcase name="constructorThrowsErrorIfDirectionInvalid()" classname="org.code.neighborhood.PainterTest" time="0.025"/>
+  <testcase name="moveThrowsErrorIfInvalidMovement()" classname="org.code.neighborhood.PainterTest" time="0.007"/>
+  <testcase name="noInfinitePaintDefaultConstructor()" classname="org.code.neighborhood.PainterTest" time="0.001"/>
+  <testcase name="canMoveReturnsFalseIfInvalid()" classname="org.code.neighborhood.PainterTest" time="0.001"/>
+  <testcase name="testSetPaintDoesNothingIfNegative()" classname="org.code.neighborhood.PainterTest" time="0.001"/>
+  <testcase name="moveSignalsNewLocationIfValidMovement()" classname="org.code.neighborhood.PainterTest" time="0.004"/>
+  <testcase name="canMoveReturnsFalseIfCurrentDirectionInvalid()" classname="org.code.neighborhood.PainterTest" time="0.001"/>
+  <testcase name="takePaintPrintsErrorIfSquareHasNoPaint()" classname="org.code.neighborhood.PainterTest" time="0.001"/>
+  <testcase name="testGetXReturnsXPos()" classname="org.code.neighborhood.PainterTest" time="0.0"/>
+  <testcase name="testGetYReturnsYPos()" classname="org.code.neighborhood.PainterTest" time="0.0"/>
+  <testcase name="paintDecrementsPaint()" classname="org.code.neighborhood.PainterTest" time="0.011"/>
+  <testcase name="largeGridInfinitePaintDefaultConstructor()" classname="org.code.neighborhood.PainterTest" time="0.001"/>
+  <testcase name="constructorThrowsErrorIfStartLocationInvalid()" classname="org.code.neighborhood.PainterTest" time="0.0"/>
+  <testcase name="defaultConstructorMakesPainterWithNoPaintFacingEast()" classname="org.code.neighborhood.PainterTest" time="0.0"/>
+  <testcase name="takePaintIncrementsPaint()" classname="org.code.neighborhood.PainterTest" time="0.001"/>
+  <testcase name="testSetPaintDoesNothingIfHasInfinitePaint()" classname="org.code.neighborhood.PainterTest" time="0.001"/>
+  <testcase name="testGetDirectionReturnsDirectionString()" classname="org.code.neighborhood.PainterTest" time="0.001"/>
+  <testcase name="canMoveReturnsTrueIfCurrentDirectionValid()" classname="org.code.neighborhood.PainterTest" time="0.0"/>
+  <testcase name="noInfinitePaint()" classname="org.code.neighborhood.PainterTest" time="0.001"/>
+  <testcase name="testSetPaintUpdatesAmount()" classname="org.code.neighborhood.PainterTest" time="0.001"/>
+  <testcase name="largeGridNoInfinitePaintWhenPaintSpecified()" classname="org.code.neighborhood.PainterTest" time="0.0"/>
+  <testcase name="paintPrintsErrorIfNoPaint()" classname="org.code.neighborhood.PainterTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
